@@ -54,8 +54,8 @@ const HeroSlider = () => {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            {/* মূল কনটেইনার - Flex + items-center দিয়ে ভার্টিক্যাল সেন্টার */}
-            <div className="h-full flex items-center bg-linear-to-r from-red to-red/50">
+        
+            <div className="h-full flex items-center bg-red">
               <div className="container mx-auto px-6 md:px-10 lg:px-16">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                   {/* Left Content - Text */}
