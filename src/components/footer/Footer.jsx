@@ -229,10 +229,11 @@ export default function Footer() {
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-3 content-center items-center py-6  text-sm md:text-base">
             <div className=" ">
-              <div>©2005 All rights reserved</div>
+              <div>Ideation & Design Shahadat</div>
+           
             </div>
             <div className="flex justify-center">
-              <h4>DANISH SOUVENIRS</h4>
+              <h4>DANISH SOUVENIRS ©2005 All rights reserved</h4>
             </div>
             <div className="flex justify-end">
               <Link to="https://inoodex.com/">

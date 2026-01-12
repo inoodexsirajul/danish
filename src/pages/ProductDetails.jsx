@@ -1,5 +1,6 @@
  // ProductDetailsFull.jsx - Complete version with Customer Review Form
 import React, { useState } from 'react';
+import Breadcrumb from '../components/Breadcrumb';
 
 const ProductDetailsFull = () => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -142,6 +143,12 @@ const ProductDetailsFull = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container px-4 sm:px-6 lg:px-8 py-6 md:py-10">
+        <Breadcrumb
+          customItems={[
+            { name: "Danish Souvenirs", url: "/souvenirs" },
+            { name: "Apparel", url: "/souvenirs/apparel" }, // or current category
+          ]}
+        />
 
         {/* ==================== MAIN PRODUCT SECTION ==================== */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12">
@@ -162,12 +169,18 @@ const ProductDetailsFull = () => {
                   onClick={() => setSelectedImage(idx)}
                   className={`
                     aspect-square rounded-lg overflow-hidden border-2 transition-all duration-200
-                    ${selectedImage === idx 
-                      ? 'border-red shadow-md scale-105' 
-                      : 'border-gray hover:border-red-300'}
+                    ${
+                      selectedImage === idx
+                        ? "border-red shadow-md scale-105"
+                        : "border-gray hover:border-red-300"
+                    }
                   `}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
+                  <img
+                    src={img}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
                 </button>
               ))}
             </div>
@@ -179,7 +192,7 @@ const ProductDetailsFull = () => {
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
                 {product.name}
               </h1>
-              
+
               <div className="mt-3 flex flex-wrap items-center gap-4">
                 <div className="flex items-center gap-3">
                   <span className="text-3xl md:text-4xl font-bold text-red">
@@ -195,7 +208,16 @@ const ProductDetailsFull = () => {
                 <div className="flex items-center gap-2">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
-                      <svg key={i} className={`w-5 h-5 ${i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                      <svg
+                        key={i}
+                        className={`w-5 h-5 ${
+                          i < Math.floor(product.rating)
+                            ? "text-yellow-400"
+                            : "text-gray-300"
+                        }`}
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     ))}
@@ -224,9 +246,11 @@ const ProductDetailsFull = () => {
                     }}
                     className={`
                       w-10 h-10 rounded-full border-2 transition-all duration-200
-                      ${selectedColor === color.name 
-                        ? 'border-red scale-110 shadow-md' 
-                        : 'border-gray-300 hover:border-gray-400'}
+                      ${
+                        selectedColor === color.name
+                          ? "border-red scale-110 shadow-md"
+                          : "border-gray-300 hover:border-gray-400"
+                      }
                     `}
                     style={{ backgroundColor: color.hex }}
                     title={color.name}
@@ -247,9 +271,11 @@ const ProductDetailsFull = () => {
                     onClick={() => setSelectedSize(size)}
                     className={`
                       px-5 py-2.5 border rounded-md text-sm font-medium transition-all
-                      ${selectedSize === size 
-                        ? 'border-red bg-red-50 text-red' 
-                        : 'border-gray hover:border-red-300'}
+                      ${
+                        selectedSize === size
+                          ? "border-red bg-red-50 text-red"
+                          : "border-gray hover:border-red-300"
+                      }
                     `}
                   >
                     {size}
@@ -264,7 +290,7 @@ const ProductDetailsFull = () => {
                 <label className="font-medium">Quantity:</label>
                 <div className="flex border border-gray rounded-lg overflow-hidden">
                   <button
-                    onClick={() => setQuantity(q => Math.max(1, q - 1))}
+                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                     className="w-12 h-11 flex items-center justify-center text-xl hover:bg-gray-100"
                   >
                     −
@@ -273,7 +299,7 @@ const ProductDetailsFull = () => {
                     {quantity}
                   </span>
                   <button
-                    onClick={() => setQuantity(q => q + 1)}
+                    onClick={() => setQuantity((q) => q + 1)}
                     className="w-12 h-11 flex items-center justify-center text-xl hover:bg-gray-100"
                   >
                     +
@@ -282,16 +308,20 @@ const ProductDetailsFull = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="
+                <button
+                  className="
                   flex-1 bg-red text-white py-4 rounded-lg 
                   font-bold text-lg hover:bg-red-800 transition-colors
-                ">
+                "
+                >
                   Add to Cart
                 </button>
-                <button className="
+                <button
+                  className="
                   flex-1 border-2 border-red text-red
                   py-4 rounded-lg font-bold text-lg hover:bg-red-50 transition-colors
-                ">
+                "
+                >
                   Buy Now
                 </button>
               </div>
@@ -309,31 +339,35 @@ const ProductDetailsFull = () => {
         <div className="mt-12 md:mt-16">
           <div className="border-b border-gray">
             <nav className="flex flex-wrap gap-6 md:gap-10">
-              {['description', 'features', 'specification', 'shipping'].map(tab => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`
+              {["description", "features", "specification", "shipping"].map(
+                (tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`
                     pb-3 px-1 font-medium text-lg transition-colors
-                    ${activeTab === tab 
-                      ? 'border-b-2 border-red text-red' 
-                      : 'text-gray-600 hover:text-gray-900'}
+                    ${
+                      activeTab === tab
+                        ? "border-b-2 border-red text-red"
+                        : "text-gray-600 hover:text-gray-900"
+                    }
                   `}
-                >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                </button>
-              ))}
+                  >
+                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  </button>
+                )
+              )}
             </nav>
           </div>
 
           <div className="py-8">
-            {activeTab === 'description' && (
+            {activeTab === "description" && (
               <div className="prose max-w-none text-gray-700">
                 <p>{product.description}</p>
               </div>
             )}
 
-            {activeTab === 'features' && (
+            {activeTab === "features" && (
               <ul className="grid md:grid-cols-2 gap-4">
                 {product.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
@@ -344,18 +378,23 @@ const ProductDetailsFull = () => {
               </ul>
             )}
 
-            {activeTab === 'specification' && (
+            {activeTab === "specification" && (
               <div className="grid md:grid-cols-2 gap-6">
                 {product.specifications.map((spec, i) => (
-                  <div key={i} className="flex justify-between py-2 border-b border-gray">
-                    <span className="font-medium text-gray-700">{spec.title}</span>
+                  <div
+                    key={i}
+                    className="flex justify-between py-2 border-b border-gray"
+                  >
+                    <span className="font-medium text-gray-700">
+                      {spec.title}
+                    </span>
                     <span className="text-gray-600">{spec.value}</span>
                   </div>
                 ))}
               </div>
             )}
 
-            {activeTab === 'shipping' && (
+            {activeTab === "shipping" && (
               <div className="space-y-4 text-gray-700">
                 <p>Delivery time: 3-7 working days in Denmark & EU</p>
                 <p>Free shipping on orders above DKK 499</p>
@@ -373,12 +412,24 @@ const ProductDetailsFull = () => {
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {product.reviews.map(review => (
-              <div key={review.id} className="bg-white p-6 rounded-xl border border-gray shadow-sm">
+            {product.reviews.map((review) => (
+              <div
+                key={review.id}
+                className="bg-white p-6 rounded-xl border border-gray shadow-sm"
+              >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
-                      <svg key={i} className={`w-5 h-5 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                      <svg
+                        key={i}
+                        className={`w-5 h-5 ${
+                          i < review.rating
+                            ? "text-yellow-400"
+                            : "text-gray-300"
+                        }`}
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     ))}
@@ -433,7 +484,9 @@ const ProductDetailsFull = () => {
                       >
                         <svg
                           className={`w-8 h-8 transition-colors ${
-                            star <= reviewRating ? 'text-yellow-400' : 'text-gray-300 hover:text-yellow-300'
+                            star <= reviewRating
+                              ? "text-yellow-400"
+                              : "text-gray-300 hover:text-yellow-300"
                           }`}
                           fill="currentColor"
                           viewBox="0 0 20 20"
@@ -447,7 +500,10 @@ const ProductDetailsFull = () => {
 
                 {/* Review Title */}
                 <div>
-                  <label htmlFor="reviewTitle" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="reviewTitle"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Review Title (optional)
                   </label>
                   <input
@@ -462,7 +518,10 @@ const ProductDetailsFull = () => {
 
                 {/* Review Text */}
                 <div>
-                  <label htmlFor="reviewText" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="reviewText"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Your Review *
                   </label>
                   <textarea
@@ -478,7 +537,10 @@ const ProductDetailsFull = () => {
 
                 {/* Name */}
                 <div>
-                  <label htmlFor="reviewName" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="reviewName"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Your Name *
                   </label>
                   <input
@@ -502,7 +564,8 @@ const ProductDetailsFull = () => {
                 </div>
 
                 <p className="text-sm text-gray-500">
-                  Your review will be published after moderation. We appreciate honest feedback!
+                  Your review will be published after moderation. We appreciate
+                  honest feedback!
                 </p>
               </form>
             )}
@@ -516,20 +579,23 @@ const ProductDetailsFull = () => {
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-            {product.relatedProducts.map(item => (
-              <div key={item.id} className="bg-white rounded-xl overflow-hidden border border-gray shadow-sm hover:shadow-md transition-shadow">
+            {product.relatedProducts.map((item) => (
+              <div
+                key={item.id}
+                className="bg-white rounded-xl overflow-hidden border border-gray shadow-sm hover:shadow-md transition-shadow"
+              >
                 <div className="aspect-square">
-                  <img 
-                    src={item.image} 
+                  <img
+                    src={item.image}
                     alt={item.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-medium text-gray-800 line-clamp-2">{item.name}</h3>
-                  <p className="mt-2 text-red font-bold">
-                    DKK {item.price}
-                  </p>
+                  <h3 className="font-medium text-gray-800 line-clamp-2">
+                    {item.name}
+                  </h3>
+                  <p className="mt-2 text-red font-bold">DKK {item.price}</p>
                 </div>
               </div>
             ))}

@@ -70,8 +70,8 @@ const Header = () => {
         },
       ],
     },
-    { label: "CAMPAIGN", path: "/campaign", icon: null },
-    { label: "BLOG", path: "/blog", icon: null },
+    { label: "CAMPAIGN", path: "/campaigns", icon: null },
+    { label: "BLOG", path: "/blogs", icon: null },
     { label: "LOCATE STORE", path: "/stores", icon: null },
   ];
 

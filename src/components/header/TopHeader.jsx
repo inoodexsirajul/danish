@@ -27,12 +27,13 @@ const TopHeader = () => {
                   w-full
                   bg-white
                   text-gray-800 
-                  placeholder:text-white/60
+                  placeholder:text-gray-400
                   pl-10 pr-12
                   py-2.5 md:py-3
                   rounded-full
                   border border-white/20
                   focus:outline-none
+                  
                   focus:ring-2 focus:ring-white/30
                  
                   transition-all duration-200
