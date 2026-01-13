@@ -143,16 +143,11 @@ const ProductDetailsFull = () => {
           {/* Gallery */}
           <div className="space-y-4">
             <div className="bg-white rounded-xl overflow-hidden border border-gray shadow-sm  ">
-              {/* <img
-                src={currentImages[selectedImage]}
-                alt={`${product.name} - ${selectedColor}`}
-                className="w-full h-full object-contain p-8"
-              /> */}
+              
               <ImageZoom
-                src={currentImages[selectedImage]} // মেইন ইমেজ (যেটা দেখাবে)
+                src={currentImages[selectedImage]}  
                 alt={`${product.name} - ${selectedColor}`}
-                zoom="300" // জুম লেভেল % এ (150–300 এর মধ্যে ভালো লাগে)
-                // zoomSrc="..."                       // অপশনাল: আরও হাই-রেজোলিউশন ভার্সন দিতে পারেন
+                zoom="300"   
                 className="w-full h-full object-contain"
               />
             </div>
