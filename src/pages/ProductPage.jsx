@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import { Link } from "react-router";
+import ProductCard from "../components/ProductCard";
+import { products } from "../data/data";
 
 const ProductPage = () => {
   const [activeFilters, setActiveFilters] = useState({
@@ -14,53 +16,8 @@ const ProductPage = () => {
   });
 
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-
-  // Sample products – added category & brand
-  const products = [
-    {
-      id: 1,
-      name: "Danish Flag Polo T-Shirt",
-      price: 799,
-      oldPrice: 999,
-      image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=400",
-      discount: 20,
-      category: "Apparel",
-      brand: "Copenhagen Collection",
-    },
-    {
-      id: 2,
-      name: "Nyhavn Skyline Hoodie",
-      price: 1299,
-      image: "https://images.unsplash.com/photo-1552374196-1ab2a1c0f3e0?w=400",
-      category: "Apparel",
-      brand: "Nordic Soul",
-    },
-    {
-      id: 3,
-      name: "Little Mermaid Keyring",
-      price: 89,
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400",
-      category: "Accessories",
-      brand: "Danish Gifts",
-    },
-    {
-      id: 4,
-      name: "Copenhagen Souvenir Mug",
-      price: 199,
-      image: "https://images.unsplash.com/photo-1572449043410-1d2a9d7f1a5a?w=400",
-      category: "Home & Kitchen",
-      brand: "Copenhagen Collection",
-    },
-    {
-      id: 5,
-      name: "Viking Rune Bracelet",
-      price: 349,
-      image: "https://images.unsplash.com/photo-1611590027211-b954fd027b51?w=400",
-      category: "Jewelry",
-      brand: "Nordic Soul",
-    },
-  ];
-
+ 
+ 
   // Available filter options
   const categories = ["Apparel", "Accessories", "Home & Kitchen", "Jewelry", "Souvenirs"];
   const brands = ["Copenhagen Collection", "Nordic Soul", "Danish Gifts"];
@@ -122,23 +79,7 @@ const ProductPage = () => {
             { name: "Danish Souvenirs", url: "/souvenirs" },
             { name: "Apparel", url: "/souvenirs/apparel" }, // or current category
           ]}
-        />
-        {/* ==================== HERO ==================== */}
-        <div className="mb-8 md:mb-12">
-          <div className="relative rounded-2xl overflow-hidden h-48 md:h-64 bg-linear-to-r from-red to-red-800">
-            <div className="absolute inset-0 bg-black/30" />
-            <div className="relative h-full flex items-center justify-center text-center text-white px-6">
-              <div>
-                <h1 className="text-3xl md:text-5xl font-bold mb-3">
-                  Danish Souvenirs
-                </h1>
-                <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
-                  Authentic gifts, apparel & accessories from Denmark
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        /> 
 
         {/* ==================== FILTER & SORT BAR ==================== */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
@@ -157,7 +98,7 @@ const ProductPage = () => {
               onChange={(e) =>
                 setActiveFilters((prev) => ({ ...prev, sort: e.target.value }))
               }
-              className="border border-[var(--color-gray)] rounded-lg px-4 py-2 bg-white text-gray-700 text-sm md:text-base"
+              className="border border-gray rounded-lg px-4 py-2 bg-white text-gray-700 text-sm md:text-base outline-0"
             >
               <option value="newest">Newest First</option>
               <option value="price-low">Price: Low → High</option>
@@ -167,7 +108,7 @@ const ProductPage = () => {
 
             <button
               onClick={() => setShowMobileFilters(true)}
-              className="md:hidden bg-white border border-[var(--color-gray)] px-5 py-2 rounded-lg font-medium"
+              className="md:hidden bg-white border border-gray px-5 py-2 rounded-lg font-medium"
             >
               Filters
             </button>
@@ -360,46 +301,7 @@ const ProductPage = () => {
           <main className="lg:col-span-9">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
               {sortedProducts.map((product) => (
-                <div
-                  key={product.id}
-                  className="group bg-white rounded-xl overflow-hidden border border-gray shadow-sm hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="relative aspect-square">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    {product.discount && (
-                      <div className="absolute top-3 left-3 bg-red text-white text-xs font-bold px-2.5 py-1 rounded-full">
-                        -{product.discount}%
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="p-4">
-                    <Link to="/product-details">
-                      <h3 className="font-medium text-gray-900 line-clamp-2 min-h-[2.8rem]">
-                        {product.name}
-                      </h3>
-                    </Link>
-
-                    <div className="mt-2 flex items-center gap-3">
-                      <span className="text-lg font-bold text-red">
-                        DKK {product.price}
-                      </span>
-                      {product.oldPrice && (
-                        <span className="text-sm text-gray-500 line-through">
-                          DKK {product.oldPrice}
-                        </span>
-                      )}
-                    </div>
-
-                    <button className="mt-4 w-full bg-red cursor-pointer hover:bg-red hover:text-white text-white py-2.5 rounded-lg text-sm font-medium transition-colors">
-                      Add to Cart
-                    </button>
-                  </div>
-                </div>
+                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
 

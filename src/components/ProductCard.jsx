@@ -1,27 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const ProductCard = ({product}) => {
   return (
-    <div 
+    <div
       className={`
-                bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-md 
+                bg-white rounded-xl overflow-hidden border border-black/30 shadow-lg hover:shadow-md 
                 transition-all duration-300    
-              `}
-    >
+              `} >
       {/* Product Image */}
       <div className="aspect-square relative bg-gray p-4 flex items-center justify-center">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
-        />
+        <Link to="/product-details" >
+          <img
+            src={product.image}
+            alt={product.name}
+            className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+          />
+        </Link>
       </div>
 
       {/* Content */}
       <div className="p-3 sm:p-4 text-start">
-        <h3 className="text-xs sm:text-sm font-medium text-gray-700 min-h-10 line-clamp-2">
-          {product.name}
-        </h3>
+        <Link to="/product-details">
+          <h3 className="text-xs sm:text-sm font-medium text-gray-700 min-h-10 line-clamp-2">
+            {product.name}
+          </h3>
+        </Link>
 
         <p className="mt-1.5 text-sm font-semibold text-gray-900">
           {product.price}

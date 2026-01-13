@@ -55,12 +55,12 @@ const BlogDetailPage = () => {
             <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 mb-6">
               <Link
                 to="/blog"
-                className="hover:text-[var(--color-red)] transition-colors"
+                className="hover:text-red transition-colors"
               >
                 ← Back to Blog
               </Link>
-              <span className="text-[var(--color-gray)]">/</span>
-              <span className="bg-white px-3 py-1 rounded-full border border-[var(--color-gray)]">
+              <span className="text-gray">/</span>
+              <span className="bg-white px-3 py-1 rounded-full border border-gray">
                 {post.category}
               </span>
             </div>
@@ -81,14 +81,14 @@ const BlogDetailPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-10 md:py-16">
+      <div className="container mx-auto px-4 py-10 md:py-1">
         <div className="max-w-4xl mx-auto">
           {/* Featured Image */}
           <div className="rounded-2xl overflow-hidden shadow-lg mb-10 md:mb-16">
             <img
               src={post.image}
               alt={post.title}
-              className="w-full h-auto object-cover aspect-[16/9] md:aspect-[4/3] lg:aspect-[16/9]"
+              className="w-full h-auto object-cover aspect-video md:aspect-4/3 lg:aspect-video"
             />
           </div>
 
@@ -98,8 +98,8 @@ const BlogDetailPage = () => {
           </div>
 
           {/* Author Bio */}
-          <div className="mt-16 p-6 md:p-8 bg-white rounded-2xl border border-[var(--color-gray)] flex flex-col md:flex-row gap-6 items-start">
-            <div className="w-20 h-20 rounded-full bg-[var(--color-red)]/10 flex items-center justify-center text-2xl font-bold text-[var(--color-red)] flex-shrink-0">
+          <div className="mt-16 p-6 md:p-8 bg-white rounded-2xl border border-gray flex flex-col md:flex-row gap-6 items-start">
+            <div className="w-20 h-20 rounded-full bg-red/10 flex items-center justify-center text-2xl font-bold text-red flex-shrink-0">
               ML
             </div>
             <div>
@@ -109,31 +109,25 @@ const BlogDetailPage = () => {
               <p className="text-gray-600 mb-3">
                 Textile designer and creative director at Danish Souvenirs.
                 Passionate about timeless design and sustainable craftsmanship.
-              </p>
-              <Link
-                to="#"
-                className="text-[var(--color-red)] hover:text-red-800 font-medium transition-colors"
-              >
-                View all posts by Mette →
-              </Link>
+              </p> 
             </div>
           </div>
 
           {/* Pagination / Next & Previous */}
-          <div className="mt-16 pt-10 border-t border-[var(--color-gray)]">
+          <div className="mt-16 pt-10 border-t border-gray mb-10">
             <div className="grid md:grid-cols-2 gap-6">
               {relatedPosts.map((related, index) => (
                 <Link
                   key={related.id}
                   to={`/blog/${related.slug}`}
-                  className={`group p-6 rounded-xl border border-[var(--color-gray)] hover:border-[var(--color-red)] transition-colors ${
+                  className={`group p-6 rounded-xl border border-gray hover:border-red transition-colors ${
                     index === 0 ? "text-left" : "text-right md:text-right"
                   }`}
                 >
                   <div className="text-sm text-gray-500 mb-2">
                     {index === 0 ? "Previous Post" : "Next Post"}
                   </div>
-                  <h4 className="font-medium text-gray-900 group-hover:text-[var(--color-red)] transition-colors">
+                  <h4 className="font-medium text-gray-900 group-hover:text-red transition-colors">
                     {related.title}
                   </h4>
                 </Link>
@@ -143,29 +137,7 @@ const BlogDetailPage = () => {
         </div>
       </div>
 
-      {/* Related Posts / Newsletter */}
-      <div className="bg-white border-t border-gray">
-        <div className="container mx-auto px-4 py-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Enjoyed this post?</h2>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Subscribe to get new stories about Danish design, culture, and
-              lifestyle straight to your inbox
-            </p>
 
-            <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 px-5 py-3 border border-[var(--color-gray)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-red)]/30"
-              />
-              <button className="bg-[var(--color-red)] text-white px-8 py-3 rounded-lg font-medium hover:bg-red-800 transition-colors whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

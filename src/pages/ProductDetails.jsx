@@ -1,6 +1,9 @@
  // ProductDetailsFull.jsx - Complete version with Customer Review Form
 import React, { useState } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
+import { products } from '../data/data';
+import ProductCard from '../components/ProductCard'; 
+import ImageZoom from "react-image-zooom";
 
 const ProductDetailsFull = () => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -15,7 +18,7 @@ const ProductDetailsFull = () => {
   const [reviewText, setReviewText] = useState('');
   const [reviewName, setReviewName] = useState('');
   const [reviewSubmitted, setReviewSubmitted] = useState(false);
-
+ 
   const product = {
     name: "Danish Flag Premium Polo T-Shirt",
     price: 799,
@@ -23,41 +26,29 @@ const ProductDetailsFull = () => {
     rating: 4.7,
     reviewCount: 342,
     sku: "DK-POLO-FLAG-001",
-    shortDesc: "Classic Danish flag inspired polo t-shirt • Premium cotton • Comfort fit • Perfect for casual & travel wear",
-    
+    shortDesc:
+      "Classic Danish flag inspired polo t-shirt • Premium cotton • Comfort fit • Perfect for casual & travel wear",
+
     colors: [
-      { name: 'Red', hex: '#A60A07' },
-      { name: 'White', hex: '#FFFFFF' },
-      { name: 'Navy', hex: '#0A1D37' },
-      { name: 'Black', hex: '#000000' },
+      { name: "Red", hex: "#A60A07" },
+      { name: "White", hex: "#FFFFFF" },
+      { name: "Navy", hex: "#0A1D37" },
+      { name: "Black", hex: "#000000" },
     ],
-    
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    
+
+    sizes: ["S", "M", "L", "XL", "XXL"],
+
     images: {
-      Red: [
-        "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800",
-        "https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=800",
-        "https://images.unsplash.com/photo-1554568218-0f1715e72254?w=800",
-      ],
-      White: [
-        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800",
-        "https://images.unsplash.com/photo-1581656626802-97c0891b1f34?w=800",
-      ],
-      Navy: [
-        "https://images.unsplash.com/photo-1554568218-0f1715e72254?w=800",
-        "https://images.unsplash.com/photo-1583744946564-b52d6adab3ba?w=800",
-      ],
-      Black: [
-        "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800",
-        "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800",
-      ],
+      Red: ["/products/3.png", "/products/4.png", "/products/5.png"],
+      White: ["/products/4.png", "/products/3.png", "/products/5.png"],
+      Navy: ["/products/5.png", "/products/3.png", "/products/4.png"],
+      Black: ["/products/3.png", "/products/4.png", "/products/5.png"],
     },
-    
+
     description: `Made from 100% premium combed cotton (180-200 GSM) with excellent breathability and durability. 
     Features classic Danish flag design printed with eco-friendly, high-quality DTG printing that lasts wash after wash.
     Perfect for everyday casual wear, holidays in Denmark or as a thoughtful souvenir/gift.`,
-    
+
     specifications: [
       { title: "Material", value: "100% Premium Combed Cotton" },
       { title: "Fabric Weight", value: "180-200 GSM" },
@@ -67,14 +58,14 @@ const ProductDetailsFull = () => {
       { title: "Printing", value: "Direct-to-Garment (DTG)" },
       { title: "Care", value: "Machine wash cold, inside out" },
     ],
-    
+
     features: [
       "Soft & breathable premium cotton",
       "Vibrant Danish flag design",
       "Reinforced collar & cuffs",
       "Side slits for comfort",
       "Tagless comfort neck label",
-      "Pre-shrunk & colorfast"
+      "Pre-shrunk & colorfast",
     ],
 
     reviews: [
@@ -84,7 +75,7 @@ const ProductDetailsFull = () => {
         rating: 5,
         date: "15 Nov 2025",
         text: "Perfect quality! The Danish flag print is very vibrant and the fabric feels premium. Highly recommended!",
-        verified: true
+        verified: true,
       },
       {
         id: 2,
@@ -92,7 +83,7 @@ const ProductDetailsFull = () => {
         rating: 4,
         date: "02 Dec 2025",
         text: "Nice t-shirt, good fit. Colors are a bit darker than in the pictures but still beautiful.",
-        verified: true
+        verified: true,
       },
       {
         id: 3,
@@ -100,16 +91,11 @@ const ProductDetailsFull = () => {
         rating: 5,
         date: "20 Dec 2025",
         text: "Bought as a souvenir for my friend in Copenhagen. He loved it! Fast delivery too.",
-        verified: true
-      }
+        verified: true,
+      },
     ],
 
-    relatedProducts: [
-      { id: 1, name: "Denmark Flag Hoodie", price: 1299, image: "https://images.unsplash.com/photo-1552374196-1ab2a1c0f3e0?w=400" },
-      { id: 2, name: "Copenhagen Skyline T-Shirt", price: 649, image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400" },
-      { id: 3, name: "Little Mermaid Keyring", price: 89, image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400" },
-      { id: 4, name: "Nyhavn Souvenir Mug", price: 199, image: "https://images.unsplash.com/photo-1572449043410-1d2a9d7f1a5a?w=400" },
-    ]
+ 
   };
 
   const currentImages = product.images[selectedColor] || product.images.Red;
@@ -140,13 +126,15 @@ const ProductDetailsFull = () => {
     setReviewName('');
   };
 
+   
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container px-4 sm:px-6 lg:px-8 py-6 md:py-10">
         <Breadcrumb
           customItems={[
             { name: "Danish Souvenirs", url: "/souvenirs" },
-            { name: "Apparel", url: "/souvenirs/apparel" }, // or current category
+            { name: "Apparel", url: "/souvenirs/apparel" },
           ]}
         />
 
@@ -154,11 +142,18 @@ const ProductDetailsFull = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12">
           {/* Gallery */}
           <div className="space-y-4">
-            <div className="bg-white rounded-xl overflow-hidden border border-gray shadow-sm aspect-square">
-              <img
+            <div className="bg-white rounded-xl overflow-hidden border border-gray shadow-sm  ">
+              {/* <img
                 src={currentImages[selectedImage]}
                 alt={`${product.name} - ${selectedColor}`}
                 className="w-full h-full object-contain p-8"
+              /> */}
+              <ImageZoom
+                src={currentImages[selectedImage]} // মেইন ইমেজ (যেটা দেখাবে)
+                alt={`${product.name} - ${selectedColor}`}
+                zoom="300" // জুম লেভেল % এ (150–300 এর মধ্যে ভালো লাগে)
+                // zoomSrc="..."                       // অপশনাল: আরও হাই-রেজোলিউশন ভার্সন দিতে পারেন
+                className="w-full h-full object-contain"
               />
             </div>
 
@@ -578,26 +573,9 @@ const ProductDetailsFull = () => {
             You May Also Like
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-            {product.relatedProducts.map((item) => (
-              <div
-                key={item.id}
-                className="bg-white rounded-xl overflow-hidden border border-gray shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="aspect-square">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-medium text-gray-800 line-clamp-2">
-                    {item.name}
-                  </h3>
-                  <p className="mt-2 text-red font-bold">DKK {item.price}</p>
-                </div>
-              </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+            {products.map((item) => (
+              <ProductCard key={item.id} product={item} />
             ))}
           </div>
         </div>

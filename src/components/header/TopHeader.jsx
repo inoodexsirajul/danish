@@ -12,9 +12,11 @@ const TopHeader = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo / Brand Name */}
           <div className="shrink-0">
-            <h1 className="text-md md:text-3xl font-bold tracking-tight">
-              DANISH SOUVENIRS
-            </h1>
+            <Link to="/">
+              <h1 className="text-md md:text-3xl font-bold tracking-tight">
+                DANISH SOUVENIRS
+              </h1>
+            </Link>
           </div>
 
           {/* Search Bar - center on desktop, full width on mobile */}
@@ -57,7 +59,7 @@ const TopHeader = () => {
           {/* Icons - right side */}
           <div className="flex items-center gap-4 md:gap-4">
             <Link
-              to="#"
+              to="/profile"
               className="p-2 hover:bg-white/10 rounded-full transition-colors"
               aria-label="User account"
             >
@@ -65,7 +67,7 @@ const TopHeader = () => {
             </Link>
 
             <Link
-              to="#"
+              to="/cart"
               className="p-2 hover:bg-white/10 rounded-full transition-colors relative"
               aria-label="Shopping cart"
             >

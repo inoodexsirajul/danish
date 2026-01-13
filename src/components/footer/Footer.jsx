@@ -1,12 +1,51 @@
  
-import { Mail, Phone, Twitch, X } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
 import { BsTiktok, BsTwitter, BsYoutube } from "react-icons/bs";
-import { FaFacebook } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { Link } from "react-router";
+import { FaFacebook } from "react-icons/fa"; 
+import { Link } from "react-router"; 
+
+
 
 export default function Footer() {
+
+  const categories = [
+    {
+      title: "Amalienborg Palace",
+      imageText: "AMALIENBORG PALACE",
+      imgSrc: "/categories/1.svg", // replace with real paths
+    },
+    {
+      title: "Christiansborg Palace",
+      imageText: "CHRISTIANSBORG PALACE",
+      imgSrc: "/categories/2.svg",
+    },
+    {
+      title: "Nyhavn",
+      imageText: "NYHAVN",
+      imgSrc: "/categories/3.svg",
+    },
+    {
+      title: "Figurine",
+      imageText: "figurine",
+      imgSrc: "/categories/4.svg",
+    },
+    {
+      title: "Keyring",
+      imageText: "Keyring",
+      imgSrc: "/categories/5.svg",
+    },
+    {
+      title: "Dyhavn",
+      imageText: "dyhavn",
+      imgSrc: "/categories/6.svg",
+    },
+    {
+      title: "Scandinavia",
+      imageText: "Scandinavia",
+      imgSrc: "/categories/7.svg",
+    },
+  ];
   return (
     <footer className=" text-white">
       <div className="bg-red">
@@ -27,19 +66,19 @@ export default function Footer() {
                   <span>
                     <Phone size={18} />
                   </span>
-                  +108 8974 773223
+                  +4553713518
                 </p>
                 <p className="flex items-center gap-2">
                   <span>
                     <Mail size={18} />
                   </span>
-                  info@clicshop.com
+                  hyggecotton2025@gmail.com
                 </p>
                 <p className="flex items-center gap-2">
                   <span>
-                    <Phone size={18} />
+                    <MapPin size={18} />
                   </span>{" "}
-                  +108 8974 773567
+                  Trommesalen 3, 1614 København
                 </p>
               </div>
 
@@ -67,19 +106,25 @@ export default function Footer() {
               <h4 className="text-lg font-semibold mb-5">Quick Links</h4>
               <ul className="space-y-2.5 text-red-100/90 text-sm">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link to="/" className="hover:text-white transition-colors">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link
+                    to="/products"
+                    className="hover:text-white transition-colors"
+                  >
                     Shop
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Special Offers
-                  </a>
+                  <Link
+                    to="/campaigns"
+                    className="hover:text-white transition-colors"
+                  >
+                    Campaigns
+                  </Link>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white transition-colors">
@@ -87,14 +132,12 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link
+                    to="/contacts"
+                    className="hover:text-white transition-colors"
+                  >
                     Contact
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Track Order
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -103,36 +146,13 @@ export default function Footer() {
             <div>
               <h4 className="text-lg font-semibold mb-5">Categories</h4>
               <ul className="space-y-2.5 text-red-100/90 text-sm">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Handbags
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Office / Laptop Bags
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    School Bags
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Polo T-Shirts
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Women's T-Shirts
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Men's Casual Bags
-                  </a>
-                </li>
+                {categories.map((category, index) => (
+                  <li key={index}>
+                    <a href="#" className="hover:text-white transition-colors"> 
+                      {category.title}
+                    </a>
+                  </li>
+                ))} 
               </ul>
             </div>
 
@@ -199,27 +219,16 @@ export default function Footer() {
 
           <div className="relative flex items-center  mt-8">
             {/* Top thin line */}
-            <div className="w-full   h-[1.5px] bg-white" />
+            <div className="w-full   h-px bg-white" ></div>
 
             {/* Main content */}
-            <div className="flex-1 items-center gap-3 md:gap-4 border  rounded-full p-4">
+            <div className="w-50 h-[60] items-center gap-3 md:gap-4 shrink-0     px-4 py-2">
               {/* COPENHAGEN - big uppercase */}
-              <h1
-                className="
-                text-xl
-                font-bold 
-                tracking-[0.12em] 
-                text-white 
-                leading-none
-              "
-                style={{ fontFamily: "Arial Black, Arial, sans-serif" }}
-              >
-                COPENHAGEN
-              </h1>
+               <img src="/logo.png" alt="sdf"  className="w-full h-full object-center"/>
             </div>
 
             {/* Bottom thin line */}
-            <div className="w-full h-[1.5px] bg-white" />
+            <div className="w-full h-px bg-white"></div>
           </div>
         </div>
       </div>
@@ -227,15 +236,14 @@ export default function Footer() {
       {/* Bottom Bar - Payment Methods */}
       <div className="bg-red-800">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 content-center items-center py-6  text-sm md:text-base">
-            <div className=" ">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 content-center items-center py-6  text-sm md:text-base">
+            <div className="text-center md:text-left ">
               <div>Ideation & Design Shahadat</div>
-           
             </div>
             <div className="flex justify-center">
-              <h4>DANISH SOUVENIRS ©2005 All rights reserved</h4>
+              <h4>DANISH SOUVENIRS ©{new Date().getFullYear()} All rights reserved</h4>
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-center md:justify-end">
               <Link to="https://inoodex.com/">
                 <h3>Develope By Inoodex</h3>
               </Link>

@@ -1,5 +1,7 @@
 // CampaignPage.jsx
 import React, { useState } from "react";
+import { products } from "../data/data";
+import ProductCard from "../components/ProductCard";
 
 const CampaignPage = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -35,44 +37,7 @@ const CampaignPage = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const products = [
-    {
-      id: 1,
-      name: "Danish Flag Polo T-Shirt",
-      originalPrice: 999,
-      campaignPrice: 699,
-      image:
-        "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800",
-      discount: 30,
-      popular: true,
-    },
-    {
-      id: 2,
-      name: "Nyhavn Skyline Hoodie",
-      originalPrice: 1499,
-      campaignPrice: 1099,
-      image: "https://images.unsplash.com/photo-1552374196-1ab2a1c0f3e0?w=800",
-      discount: 27,
-    },
-    {
-      id: 3,
-      name: "Little Mermaid Keyring",
-      originalPrice: 129,
-      campaignPrice: 89,
-      image:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-      discount: 31,
-    },
-    {
-      id: 4,
-      name: "Viking Rune Bracelet",
-      originalPrice: 499,
-      campaignPrice: 349,
-      image:
-        "https://images.unsplash.com/photo-1611590027211-b954fd027b51?w=800",
-      discount: 30,
-    },
-  ];
+ 
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -115,7 +80,7 @@ const CampaignPage = () => {
 
             <a
               href="#products"
-              className="inline-block bg-white text-[var(--color-red)] font-bold text-lg px-10 py-5 rounded-full hover:bg-gray-100 transform hover:scale-105 transition-all shadow-xl"
+              className="inline-block bg-white text-red font-bold text-lg px-10 py-5 rounded-full hover:bg-gray-100 transform hover:scale-105 transition-all shadow-xl"
             >
               Shop the Sale Now →
             </a>
@@ -155,47 +120,9 @@ const CampaignPage = () => {
             Campaign Highlights
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 md:gap-8">
             {products.map((product) => (
-              <div
-                key={product.id}
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
-              >
-                <div className="relative">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 left-3 bg-red text-white text-sm font-bold px-3 py-1.5 rounded-full">
-                    -{product.discount}%
-                  </div>
-                  {product.popular && (
-                    <div className="absolute top-3 right-3 bg-black/70 text-white text-xs font-medium px-3 py-1 rounded-full">
-                      MOST POPULAR
-                    </div>
-                  )}
-                </div>
-
-                <div className="p-5">
-                  <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2">
-                    {product.name}
-                  </h3>
-
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-2xl font-bold text-red">
-                      DKK {product.campaignPrice}
-                    </span>
-                    <span className="text-lg text-gray-500 line-through">
-                      DKK {product.originalPrice}
-                    </span>
-                  </div>
-
-                  <button className="w-full bg-red text-white py-3 rounded-lg font-medium hover:bg-red-800 transition-colors">
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
