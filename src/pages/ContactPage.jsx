@@ -9,11 +9,7 @@ const ContactPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1
-              className="text-5xl font-bold mb-4 " 
-            >
-              Get In Touch
-            </h1>
+            <h1 className="text-5xl font-bold mb-4 ">Get In Touch</h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               We’d love to hear from you! Whether you have a question about our
               education expo or need assistance with your study abroad journey,
@@ -26,21 +22,13 @@ const ContactPage = () => {
             <div className="lg:col-span-1 space-y-8">
               <div className="bg-white flex gap-4 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
                 <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-6">
-                  <MapPin size={28}  className="text-red"/>
+                  <MapPin size={28} className="text-red" />
                 </div>
                 <div>
-                  <h3
-                    className="text-2xl font-semibold mb-3 text-black/70" 
-                  >
+                  <h3 className="text-2xl font-semibold mb-3 text-black/70">
                     Visit Us
                   </h3>
-                  <p className="text-gray-600">
-                    The Westin Dhaka
-                    <br />
-                    Plot-01, Road-45, Gulshan-2
-                    <br />
-                    Dhaka-1212, Bangladesh
-                  </p>
+                  <p className="text-gray-600">Trommesalen 3, 1614 København</p>
                 </div>
               </div>
 
@@ -49,36 +37,22 @@ const ContactPage = () => {
                   <Phone size={28} className="text-red" />
                 </div>
                 <div>
-                  <h3
-                    className="text-2xl font-semibold mb-3 text-black/70" 
-                  >
+                  <h3 className="text-2xl font-semibold mb-3 text-black/70">
                     Call Us
                   </h3>
-                  <p className="text-gray-600">
-                    +880 1711-222333
-                    <br />
-                    +880 9613-800800
-                    <br />
-                    Mon - Fri: 10:00 AM - 6:00 PM
-                  </p>
+                  <p className="text-gray-600">+4553713518</p>
                 </div>
               </div>
 
               <div className="bg-white flex gap-4 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
                 <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-6">
-                  <Mail size={28}  className="text-red" />
+                  <Mail size={28} className="text-red" />
                 </div>
                 <div>
-                  <h3
-                    className="text-2xl font-semibold mb-3 text-black/70" 
-                  >
+                  <h3 className="text-2xl font-semibold mb-3 text-black/70">
                     Email Us
                   </h3>
-                  <p className="text-gray-600">
-                    info@insaf.com
-                    <br />
-                    australia@insaf.com
-                  </p>
+                  <p className="text-gray-600">hyggecotton2025@gmail.com</p>
                 </div>
               </div>
             </div>
@@ -141,7 +115,6 @@ const ContactPage = () => {
                   <Send size={20} />
                   Send Message
                 </button>
- 
               </form>
             </div>
           </div>

@@ -46,6 +46,33 @@ export default function Footer() {
       imgSrc: "/categories/7.svg",
     },
   ];
+
+  const customerPages = [
+    {
+      title: "Help & Support",
+      url: "/support",
+    },
+    {
+      title: "How to Order",
+      url: "/how-to-order",
+    },
+    {
+      title: "Privacy Policy",
+      url: "/privacy-policy",
+    },
+    {
+      title: "Return Policy",
+      url: "/return-policy",
+    },
+    {
+      title: "Shipping",
+      url: "/shipping",
+    },
+    {
+      title: "Legal Notice",
+      url: "/legal-notice",
+    },
+  ];
   return (
     <footer className=" text-white">
       <div className="bg-red">
@@ -148,11 +175,11 @@ export default function Footer() {
               <ul className="space-y-2.5 text-red-100/90 text-sm">
                 {categories.map((category, index) => (
                   <li key={index}>
-                    <a href="#" className="hover:text-white transition-colors"> 
+                    <a href="#" className="hover:text-white transition-colors">
                       {category.title}
                     </a>
                   </li>
-                ))} 
+                ))}
               </ul>
             </div>
 
@@ -160,71 +187,32 @@ export default function Footer() {
             <div>
               <h4 className="text-lg font-semibold mb-5">Customer Service</h4>
               <ul className="space-y-2.5 text-red-100/90 text-sm mb-8">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    FAQ
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Shipping Info
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Returns & Refunds
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Terms & Conditions
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Support Center
-                  </a>
-                </li>
+                {customerPages.map((page) => (
+                  <li>
+                    <Link
+                      to={page.url}
+                      className="hover:text-white transition-colors"
+                    >
+                      {page.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
-
-              {/* <div>
-              <h5 className="text-base font-medium mb-3">Newsletter</h5>
-              <form className="flex">
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="
-                    flex-1 px-4 py-2.5 rounded-l-lg bg-gray text-black 
-                    focus:outline-none focus:ring-2 focus:ring-white/30
-                  "
-                />
-                <button
-                  type="submit"
-                  className="
-                    bg-white text-red px-5 rounded-r-lg 
-                    font-medium hover:bg-gray-100 transition-colors
-                  "
-                >
-                  →
-                </button>
-              </form>
-            </div> */}
             </div>
           </div>
 
           <div className="relative flex items-center  mt-8">
             {/* Top thin line */}
-            <div className="w-full   h-px bg-white" ></div>
+            <div className="w-full   h-px bg-white"></div>
 
             {/* Main content */}
             <div className="w-50 h-[60] items-center gap-3 md:gap-4 shrink-0     px-4 py-2">
               {/* COPENHAGEN - big uppercase */}
-               <img src="/logo.png" alt="sdf"  className="w-full h-full object-center"/>
+              <img
+                src="/logo.png"
+                alt="sdf"
+                className="w-full h-full object-center"
+              />
             </div>
 
             {/* Bottom thin line */}
@@ -241,7 +229,9 @@ export default function Footer() {
               <div>Ideation & Design Shahadat</div>
             </div>
             <div className="flex justify-center">
-              <h4>DANISH SOUVENIRS ©{new Date().getFullYear()} All rights reserved</h4>
+              <h4>
+                DANISH SOUVENIRS ©{new Date().getFullYear()} All rights reserved
+              </h4>
             </div>
             <div className="flex justify-center md:justify-end">
               <Link to="https://inoodex.com/">
