@@ -97,7 +97,7 @@ const Header = () => {
           {/* ====================== */}
           {/*     DESKTOP VERSION     */}
           {/* ====================== */}
-          <div className="hidden lg:flex items-center justify-between h-16">
+          <div className="hidden lg:flex items-center justify-between h-12">
             <div className="flex items-center space-x-10">
               {navItems.map((item, index) => (
                 <div
@@ -113,7 +113,7 @@ const Header = () => {
                   <Link
                     to={item.path || "#"}
                     className={`
-                      flex items-center  cursor-pointer gap-2 py-2 text-gray-800 font-medium text-sm uppercase tracking-wide
+                      flex items-center  cursor-pointer gap-2 py-4 text-gray-800 font-medium text-sm uppercase tracking-wide
                       ${
                         item.hasMegaMenu
                           ? "cursor-default"
@@ -218,9 +218,7 @@ const Header = () => {
           {/*      MOBILE VERSION     */}
           {/* ====================== */}
           <div className="lg:hidden flex items-center justify-between h-14">
-            <div className="font-bold text-xl tracking-tight">
-              DANISH SOUVENIRS
-            </div>
+            <div className="font-bold text-xl tracking-tight">MENUS</div>
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               className="p-2 rounded-md hover:bg-gray-100"
@@ -240,27 +238,42 @@ const Header = () => {
                   className="border-b border-gray-100 last:border-b-0"
                 >
                   {item.hasMegaMenu ? (
-                    <>
-                      {/* Main Products button */}
-                      <button
-                        onClick={() => toggleMobileMenu(`main-${index}`)}
-                        className="w-full flex items-center justify-between py-4 px-3 text-gray-800 font-medium hover:bg-gray-50 rounded-md"
-                      >
-                        <div className="flex items-center gap-3">
+                    <div className="relative">
+                      {/* Products row – title + arrow আলাদা */}
+                      <div className="w-full flex items-center justify-between py-4 px-3 text-gray-800 font-medium hover:bg-gray-50 rounded-md">
+                        {/* বাম দিক – Products + icon → ক্লিক করলে /products পেজে যাবে */}
+                        <Link
+                          to="/products"
+                          className="flex items-center gap-3 flex-1"
+                          onClick={() => setIsMobileOpen(false)}
+                        >
                           {item.icon && <item.icon size={20} />}
                           <span>{item.label}</span>
-                        </div>
-                        <ChevronDown
-                          size={18}
-                          className={`transition-transform ${
-                            openMobileMenus[`main-${index}`] ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
+                        </Link>
+
+                        {/* ডান দিক – শুধু arrow → ক্লিক করলে accordion খুলবে */}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation(); // খুব জরুরি – Link এর ক্লিক বন্ধ করবে
+                            toggleMobileMenu(`main-${index}`);
+                          }}
+                          className="p-2 -mr-2"
+                        >
+                          <ChevronDown
+                            size={20}
+                            className={`transition-transform text-gray-600 ${
+                              openMobileMenus[`main-${index}`]
+                                ? "rotate-180"
+                                : ""
+                            }`}
+                          />
+                        </button>
+                      </div>
 
                       {/* Categories Accordion */}
                       {openMobileMenus[`main-${index}`] && (
-                        <div className="bg-gray-50 rounded-md mb-2">
+                        <div className="bg-gray-50 rounded-b-md mb-2 overflow-hidden">
                           {item.categories.map((cat, catIndex) => (
                             <div
                               key={cat.title}
@@ -288,14 +301,13 @@ const Header = () => {
                                 />
                               </button>
 
-                              {/* Sub items */}
                               {openMobileMenus[`cat-${index}-${catIndex}`] && (
-                                <div className="bg-white py-2 px-10">
+                                <div className="bg-white py-2 px-10 border-t border-gray-100">
                                   {cat.items.map((subItem, subIdx) => (
                                     <div key={subIdx}>
                                       {typeof subItem === "string" ? (
                                         <Link
-                                          to="#"
+                                          to="/category" // ← এখানে আসল path দিন
                                           className="block py-2 text-gray-600 hover:text-red-600"
                                           onClick={() => setIsMobileOpen(false)}
                                         >
@@ -310,7 +322,7 @@ const Header = () => {
                                             (child, childIdx) => (
                                               <Link
                                                 key={childIdx}
-                                                to="#"
+                                                to="/category" // ← আসল path দিন
                                                 className="block py-1.5 pl-4 text-gray-600 hover:text-red-600 text-sm"
                                                 onClick={() =>
                                                   setIsMobileOpen(false)
@@ -330,7 +342,7 @@ const Header = () => {
                           ))}
                         </div>
                       )}
-                    </>
+                    </div>
                   ) : (
                     <Link
                       to={item.path || "#"}

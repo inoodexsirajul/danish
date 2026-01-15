@@ -1,6 +1,6 @@
- 
-import { Mail, MapPin, Phone } from "lucide-react";
+
 import React from "react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { BsTiktok, BsTwitter, BsYoutube } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa"; 
 import { Link } from "react-router"; 
@@ -135,6 +135,11 @@ export default function Footer() {
                 <li>
                   <Link to="/" className="hover:text-white transition-colors">
                     Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" className="hover:text-white transition-colors">
+                    About
                   </Link>
                 </li>
                 <li>

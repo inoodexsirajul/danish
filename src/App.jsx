@@ -23,6 +23,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import ReturnsPolicy from './pages/ReturnsPolicy';
 import ShippingInfo from './pages/ShippingInfo';
 import LegalNotice from './pages/LegalNotice';
+import About from './pages/About';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
       <Routes>
         <Route path="/*" element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path="about" element={<About />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="products" element={<ProductPage />} />
           <Route path="locate-store" element={<LocateStore />} />

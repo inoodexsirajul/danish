@@ -20,36 +20,36 @@ const ContactPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Left - Contact Info Cards */}
             <div className="lg:col-span-1 space-y-8">
-              <div className="bg-white flex gap-4 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+              <div className="bg-white flex gap-4 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
                 <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-6">
                   <MapPin size={28} className="text-red" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold mb-3 text-black/70">
+                  <h3 className="text-xl font-semibold mb-1 text-black/70">
                     Visit Us
                   </h3>
                   <p className="text-gray-600">Trommesalen 3, 1614 København</p>
                 </div>
               </div>
 
-              <div className="bg-white flex gap-4 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+              <div className="bg-white flex gap-4 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
                 <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-6">
                   <Phone size={28} className="text-red" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold mb-3 text-black/70">
+                  <h3 className="text-xl font-semibold mb-1 text-black/70">
                     Call Us
                   </h3>
                   <p className="text-gray-600">+4553713518</p>
                 </div>
               </div>
 
-              <div className="bg-white flex gap-4 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+              <div className="bg-white flex gap-4 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
                 <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-6">
                   <Mail size={28} className="text-red" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold mb-3 text-black/70">
+                  <h3 className="text-xl font-semibold mb-1 text-black/70">
                     Email Us
                   </h3>
                   <p className="text-gray-600">hyggecotton2025@gmail.com</p>
@@ -59,15 +59,15 @@ const ContactPage = () => {
 
             {/* Right - Contact Form */}
             <div className="lg:col-span-2">
-              <form className="bg-white p-8 rounded-2xl shadow-2xl border border-gray-100">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <form className="bg-white p-8 rounded-2xl shadow-md border border-gray-100">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                   <div>
                     <label className="block text-gray-700 font-medium mb-2">
                       Full Name
                     </label>
                     <input
                       type="text"
-                      className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                      className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-red transition"
                       placeholder="Your name"
                       required
                     />
@@ -78,31 +78,31 @@ const ContactPage = () => {
                     </label>
                     <input
                       type="email"
-                      className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                      className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-red transition"
                       placeholder="your@email.com"
                       required
                     />
                   </div>
                 </div>
 
-                <div className="mb-8">
+                <div className="mb-4">
                   <label className="block text-gray-700 font-medium mb-2">
                     Phone Number
                   </label>
                   <input
                     type="tel"
-                    className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                    className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-red transition"
                     placeholder="+880 1XXXXXXXXX"
                   />
                 </div>
 
-                <div className="mb-8">
+                <div className="mb-4">
                   <label className="block text-gray-700 font-medium mb-2">
                     Your Message
                   </label>
                   <textarea
                     rows={5}
-                    className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                    className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-red transition"
                     placeholder="Tell us how we can help you..."
                     required
                   ></textarea>

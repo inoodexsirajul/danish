@@ -30,6 +30,7 @@ const Header = () => {
         {
           title: "Danish Design",
           icon: Gift,
+          path: "/category",
           items: ["Furniture", "Lighting", "Textiles", "Decor", "Chairs"],
         },
         {
@@ -38,6 +39,7 @@ const Header = () => {
           items: [
             {
               name: "Classic",
+              path: "/category",
               sub: [
                 "Little Mermaid",
                 "Troll Figures",
@@ -45,7 +47,7 @@ const Header = () => {
                 "Hans Christian Andersen",
               ],
             },
-            { name: "Modern" },
+            { name: "Modern", path: "/category" },
             {
               name: "Food Related",
               sub: ["Butter Cookies Tin", "Smørrebrød Tools"],
@@ -54,6 +56,7 @@ const Header = () => {
         },
         {
           title: "Jewelry",
+          path: "/category",
           icon: Gem,
           items: [
             "Silver",
@@ -65,16 +68,15 @@ const Header = () => {
         },
         {
           title: "Seasonal",
+          path: "/category",
           icon: Calendar,
           items: ["Christmas Collection", "New Arrivals", "Easter", "Summer"],
         },
       ],
     },
-    { label: "CAMPAIGN", path: "#", icon: null },
-    // { label: "CAMPAIGN", path: "/campaigns", icon: null },
-    { label: "BLOG", path: "#", icon: null },
-    // { label: "BLOG", path: "/blogs", icon: null },
-    { label: "LOCATE STORE", path: "/stores", icon: null },
+    { label: "CAMPAIGN", path: "/campaigns", icon: null },
+    { label: "BLOG", path: "/blogs", icon: null },
+    { label: "LOCATE STORE", path: "/locate-store", icon: null },
   ];
 
   const hotline = "+45 55 37 13 518";
@@ -87,7 +89,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm border-b">
+    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-b-black/50">
       <TopHeader />
 
       <nav className="bg-white">
@@ -134,7 +136,7 @@ const Header = () => {
                     <div
                       className="
                         absolute top-full left-0 z-50 
-                        w-[900px] bg-white shadow-2xl border-t border-gray-200 rounded-b-lg
+                        w-225 bg-white shadow-2xl border-t-2 border-red rounded-b-lg
                         grid grid-cols-12 gap-0 overflow-hidden
                       "
                     >
@@ -163,33 +165,36 @@ const Header = () => {
                       <div className="col-span-8 py-6 px-8">
                         {item.categories.find((c) => c.title === activeCategory)
                           ?.items && (
-                          <div className="grid grid-cols-2 gap-6">
+                          <div className="grid grid-cols-2 gap-x-12 gap-y-6">
                             {item.categories
                               .find((c) => c.title === activeCategory)
-                              .items.map((subItem, idx) => (
-                                <div key={idx}>
+                              ?.items?.map((subItem, idx) => (
+                                <div
+                                  key={idx}
+                                  className="min-w-0 border-b border-gray-200 pb-0"
+                                >
                                   {typeof subItem === "string" ? (
                                     <Link
                                       to="#"
-                                      className="block py-2 text-gray-700 hover:text-red-600 transition-colors"
+                                      className="block py-0 text-gray-700 hover:text-red-600 transition-colors"
                                     >
                                       {subItem}
                                     </Link>
                                   ) : (
-                                    <>
-                                      <div className="font-medium text-gray-900 mb-2">
+                                    <div>
+                                      <div className="font-semibold text-gray-900 mb-2 border-b border-gray-200 pb-1">
                                         {subItem.name}
                                       </div>
                                       {subItem.sub?.map((child, childIdx) => (
                                         <Link
                                           key={childIdx}
                                           to="#"
-                                          className="block py-1.5 text-gray-600 hover:text-red-600 text-sm pl-3"
+                                          className="block py-1.5 text-gray-600 hover:text-red-600 text-sm pl-1"
                                         >
                                           {child}
                                         </Link>
                                       ))}
-                                    </>
+                                    </div>
                                   )}
                                 </div>
                               ))}
@@ -214,7 +219,7 @@ const Header = () => {
           {/* ====================== */}
           <div className="lg:hidden flex items-center justify-between h-14">
             <div className="font-bold text-xl tracking-tight">
-              DANISH SOUVENIRS
+              MENUS
             </div>
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -237,8 +242,8 @@ const Header = () => {
                   {item.hasMegaMenu ? (
                     <>
                       {/* Main Products button */}
-                      <button
-                        onClick={() => toggleMobileMenu(`main-${index}`)}
+                      <Link
+                        to="/products"
                         className="w-full flex items-center justify-between py-4 px-3 text-gray-800 font-medium hover:bg-gray-50 rounded-md"
                       >
                         <div className="flex items-center gap-3">
@@ -247,11 +252,13 @@ const Header = () => {
                         </div>
                         <ChevronDown
                           size={18}
-                          className={`transition-transform ${
+                          onClick={() => {toggleMobileMenu(`main-${index}`);
+                           setIsMobileOpen(false)}}
+                          className={`transition-transform bg-gray-400 p-2 ${
                             openMobileMenus[`main-${index}`] ? "rotate-180" : ""
                           }`}
                         />
-                      </button>
+                      </Link>
 
                       {/* Categories Accordion */}
                       {openMobileMenus[`main-${index}`] && (
